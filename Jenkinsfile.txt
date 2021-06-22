@@ -1,0 +1,21 @@
+pipeline {
+   agent any
+
+   stages {
+      stage('Build') {
+          steps {
+            bat 'mvn clean install' 
+          }
+      }
+      stage('Package') {
+          steps {
+            bat 'mvn package'
+          }
+      }
+      stage('Test') {
+          steps {
+            bat 'java -cp target/psi-project-1.0-SNAPSHOT.jar com.sapient.App'  
+          }
+      }
+   }
+}

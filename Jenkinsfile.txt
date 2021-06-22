@@ -4,18 +4,23 @@ pipeline {
    stages {
       stage('Build') {
           steps {
-	    bat 'cd psi-project'
-            bat 'mvn clean install' 
+	    bat """
+	    cd psi-project
+            mvn clean install
+	    """ 
           }
       }
       stage('Package') {
           steps {
-            bat 'mvn package'
+            bat """
+	    cd psi-project
+            mvn package
+	    """ 
           }
       }
       stage('Test') {
           steps {
-            bat 'java -cp target/psi-project-1.0-SNAPSHOT.jar com.sapient.App'  
+            bat 'java -cp psi-project/target/psi-project-1.0-SNAPSHOT.jar com.sapient.App'  
           }
       }
    }

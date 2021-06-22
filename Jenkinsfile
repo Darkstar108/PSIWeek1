@@ -20,6 +20,7 @@ pipeline {
       }
       stage('Test') {
           steps {
+            bat 'java -version'
             bat 'java -cp psi-project/target/psi-project-1.0-SNAPSHOT.jar com.sapient.App'  
           }
       }
